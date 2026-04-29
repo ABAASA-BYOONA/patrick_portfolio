@@ -21,7 +21,7 @@ html {
 body {
     background-color: var(--bg-main);
     color: var(--green);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     line-height: 1.4;
     overflow-x: hidden;
