@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Index | Nasasiira Patrick</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #F4F1EE;
+            --green: #1A3021;
+            --shadow: 0 20px 40px rgba(26, 48, 33, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--green);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(244, 241, 238, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-weight: 900; font-size: 14px; line-height: 1.1; }
+        .nav-links { display: flex; list-style: none; gap: 30px; font-size: 11px; font-weight: 700; }
+        .nav-links a { text-decoration: none; color: var(--green); }
+
+        /* --- Header --- */
+        header {
+            padding: 180px 60px 80px;
+            text-align: center;
+        }
+
+        .label { font-size: 10px; letter-spacing: 4px; opacity: 0.6; display: block; margin-bottom: 20px; }
+        h1 { font-size: 8vw; font-weight: 900; line-height: 0.9; letter-spacing: -3px; }
+
+        /* --- Un-leveled Masonry Grid --- */
+        .gallery-container {
+            padding: 0 60px 100px;
+            column-count: 3; /* Creates the staggered effect */
+            column-gap: 30px;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Fancy Offset Logic */
+        .gallery-item:nth-child(even) { margin-top: 40px; }
+        .gallery-item:nth-child(3n) { margin-top: -20px; }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            border-radius: 2px;
+            box-shadow: var(--shadow);
+            filter: grayscale(20%);
+            transition: 0.6s;
+        }
+
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item:hover img { filter: grayscale(0%); }
+
+        .item-info {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0.6;
+        }
+
+        /* --- Lightbox / Modal --- */
+        .lightbox {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(244, 241, 238, 0.85); /* Slightly transparent bone color */
+            backdrop-filter: blur(20px); /* Blurs the background */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active { display: flex; }
+
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85%;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+            border-radius: 2px;
+            transform: scale(0.9);
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .lightbox.active img { transform: scale(1); }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) { .gallery-container { column-count: 2; } }
+        @media (max-width: 600px) {
+            .gallery-container { column-count: 1; padding: 0 20px; }
+            header { padding: 140px 20px 40px; }
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">NASASIIRA PATRICK<br><span>VISUAL ENGINEER</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="index.html#portfolio">PORTFOLIO</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <span class="label">VISUAL ARCHIVE 2026</span>
+        <h1>THE INDEXED<br>WORKS</h1>
+    </header>
+
+    <section class="gallery-container">
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afri(65).jpg" alt="Afri 65">
+            <div class="item-info"><span>07 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afrii(111).jpg" alt="Afrii 111">
+            <div class="item-info"><span>08 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(121).jpg" alt="Afriii 121">
+            <div class="item-info"><span>09 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/black.jpg" alt="Black">
+            <div class="item-info"><span>10 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/girl.jpg" alt="Girl">
+            <div class="item-info"><span>11 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/hhh (16).jpg" alt="Hhh 16">
+            <div class="item-info"><span>12 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG-59.jpg" alt="Img 59">
+            <div class="item-info"><span>13 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG-71.jpg" alt="Img 71">
+            <div class="item-info"><span>14 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG_16.jpg" alt="Img 16">
+            <div class="item-info"><span>15 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG_28.jpg" alt="Img 28">
+            <div class="item-info"><span>16 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG_40.jpg" alt="Img 40">
+            <div class="item-info"><span>17 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG_5.jpg" alt="Img 5">
+            <div class="item-info"><span>18 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG_60.jpg" alt="Img 60">
+            <div class="item-info"><span>19 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/jersey.jpg" alt="Jersey">
+            <div class="item-info"><span>20 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/KUHI7488.jpg" alt="Kuhi 7488">
+            <div class="item-info"><span>21 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/KUHI9908.JPG" alt="Kuhi 9908">
+            <div class="item-info"><span>22 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/owner.jpeg" alt="Owner">
+            <div class="item-info"><span>23 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/philo.jpg" alt="Philo">
+            <div class="item-info"><span>24 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/wedding.jpg" alt="Wedding">
+            <div class="item-info"><span>25 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/_80A9694.jpg" alt="80A9694">
+            <div class="item-info"><span>26 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/_80A9702.jpg" alt="80A9702">
+            <div class="item-info"><span>27 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/148A8139.JPG" alt="148A8139">
+            <div class="item-info"><span>28 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afri(13).jpg" alt="Afri 13">
+            <div class="item-info"><span>29 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afri(153).jpg" alt="Afri 153">
+            <div class="item-info"><span>30 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afri(172).jpg" alt="Afri 172">
+            <div class="item-info"><span>31 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afri(21).jpg" alt="Afri 21">
+            <div class="item-info"><span>32 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afri(213).jpg" alt="Afri 213">
+            <div class="item-info"><span>33 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afri(3).jpg" alt="Afri 3">
+            <div class="item-info"><span>34 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(1).jpg" alt="Afriii 1">
+            <div class="item-info"><span>35 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(102).jpg" alt="Afriii 102">
+            <div class="item-info"><span>36 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(128).jpg" alt="Afriii 128">
+            <div class="item-info"><span>37 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(23).jpg" alt="Afriii 23">
+            <div class="item-info"><span>38 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(28).jpg" alt="Afriii 28">
+            <div class="item-info"><span>39 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(34).jpg" alt="Afriii 34">
+            <div class="item-info"><span>40 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(45).jpg" alt="Afriii 45">
+            <div class="item-info"><span>41 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/afriii(6).jpg" alt="Afriii 6">
+            <div class="item-info"><span>42 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/DEBL1348.JPG" alt="DEBL 1348">
+            <div class="item-info"><span>43 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/DEBL1358.JPG" alt="DEBL 1358">
+            <div class="item-info"><span>44 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/DEBL1607.JPG" alt="DEBL 1607">
+            <div class="item-info"><span>45 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/DEBL1633.JPG" alt="DEBL 1633">
+            <div class="item-info"><span>46 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/DEBL1644.JPG" alt="DEBL 1644">
+            <div class="item-info"><span>47 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/DEBL1837.JPG" alt="DEBL 1837">
+            <div class="item-info"><span>48 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/GIL_8029.JPG" alt="GIL 8029">
+            <div class="item-info"><span>49 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG-14.jpg" alt="Img 14">
+            <div class="item-info"><span>50 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG-49.jpg" alt="Img 49">
+            <div class="item-info"><span>51 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG-84.jpg" alt="Img 84">
+            <div class="item-info"><span>52 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG_24.jpg" alt="Img 24">
+            <div class="item-info"><span>53 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/IMG_27.jpg" alt="Img 27">
+            <div class="item-info"><span>54 / PHOTO</span><span>2026</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="images/KUHI8721.JPG" alt="Kuhi 8721">
+            <div class="item-info"><span>55 / PHOTO</span><span>2026</span></div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Expanded View">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop scrolling when open
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+    </script>
+
+</body>
+</html>
