@@ -52,7 +52,7 @@ section, footer {
 
 /* --- Navigation System --- */
 .main-nav {
-    position: absolute;
+    position: fixed;
     top: 40px;
     left: 60px;
     right: 60px;
