@@ -50,6 +50,93 @@ section, footer {
     box-shadow: var(--shadow-deep);
 }
 
+/* Collection Modal */
+.collection-trigger { cursor: pointer; }
+
+.collection-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 48, 33, 0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    z-index: 2000;
+}
+
+.collection-modal.active {
+    display: flex;
+}
+
+.collection-panel {
+    width: min(1200px, 100%);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    background: rgba(244, 241, 238, 0.98);
+    border-radius: 30px;
+    padding: 40px;
+    position: relative;
+}
+
+.close-collection-btn {
+    position: absolute;
+    right: 28px;
+    top: 28px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: var(--green);
+    color: var(--bg-main);
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.collection-header {
+    max-width: 540px;
+    margin-bottom: 30px;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.collection-card {
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.collection-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.collection-card:hover img {
+    transform: scale(1.03);
+}
+
+@media (max-width: 900px) {
+    .collection-panel {
+        padding: 30px 24px;
+    }
+
+    .collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* --- Navigation System --- */
 .main-nav {
     position: fixed;

@@ -66,15 +66,15 @@
         </div>
         <div class="works-mosaic">
             <div class="mosaic-left">
-                <div class="work-thumb horizontal shadow-box"><img src="images/black.jpg" alt="Event"></div>
-                <div class="work-thumb horizontal shadow-box"><img src="images/jersey.jpg" alt="Red Jersey"></div>
+                <div class="work-thumb horizontal shadow-box collection-trigger" onclick="openCulturalCollection()"><img src="images/black.jpg" alt="Cultural"></div>
+                <div class="work-thumb horizontal shadow-box collection-trigger" onclick="openOutdoorCollection()"><img src="images/IMG_4.jpg" alt="Outdoor"></div>
             </div>
             <div class="mosaic-right">
-                <div class="work-thumb vertical shadow-box">
+                <div class="work-thumb vertical shadow-box portrait-trigger" onclick="openPortraitCollection()">
                     <img src="images/girl.jpg" alt="Portrait">
                     <div class="caption">PORTRAIT</div>
                 </div>
-                <div class="work-thumb square-float shadow-box"><img src="images/IMG_16.jpg" alt="Portrait"></div>
+                <div class="work-thumb square-float shadow-box collection-trigger" onclick="openGraduationCollection()"><img src="images/hhh (16).jpg" alt="Graduation"></div>
             </div>
         </div>
     </section>
@@ -167,5 +167,140 @@
         </div>
     </footer>
 
+    <div class="collection-modal" id="portraitModal">
+        <div class="collection-panel shadow-box">
+            <button class="close-collection-btn" type="button" onclick="closeCollection('portraitModal')">×</button>
+            <div class="collection-header">
+                <span class="label">PORTRAIT COLLECTION</span>
+                <h2>SELECTED PORTRAITS</h2>
+                <p>A curated selection of portrait images from the archive.</p>
+            </div>
+            <div class="collection-grid">
+                <div class="collection-card"><img src="images/girl.jpg" alt="Portrait 1"></div>
+                <div class="collection-card"><img src="images/philo.jpg" alt="Portrait 2"></div>
+                <div class="collection-card"><img src="images/IMG_16.jpg" alt="Portrait 3"></div>
+                <div class="collection-card"><img src="images/IMG_40.jpg" alt="Portrait 4"></div>
+                <div class="collection-card"><img src="images/IMG_5.jpg" alt="Portrait 5"></div>
+                <div class="collection-card"><img src="images/_80A9694.jpg" alt="Portrait 6"></div>
+                <div class="collection-card"><img src="images/_80A9702.jpg" alt="Portrait 7"></div>
+                <div class="collection-card"><img src="images/DEBL1348.JPG" alt="Portrait 8"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collection-modal" id="culturalModal">
+        <div class="collection-panel shadow-box">
+            <button class="close-collection-btn" type="button" onclick="closeCollection('culturalModal')">×</button>
+            <div class="collection-header">
+                <span class="label">CULTURAL COLLECTION</span>
+                <h2>RITUALS & TRADITIONS</h2>
+                <p>A collection of cultural imagery from the archive.</p>
+            </div>
+            <div class="collection-grid">
+                <div class="collection-card"><img src="images/IMG-14.jpg" alt="Cultural 1"></div>
+                <div class="collection-card"><img src="images/IMG-49.jpg" alt="Cultural 2"></div>
+                <div class="collection-card"><img src="images/IMG-59.jpg" alt="Cultural 3"></div>
+                <div class="collection-card"><img src="images/IMG-71.jpg" alt="Cultural 4"></div>
+                <div class="collection-card"><img src="images/IMG-84.jpg" alt="Cultural 5"></div>
+                <div class="collection-card"><img src="images/afri(3).jpg" alt="Cultural 6"></div>
+                <div class="collection-card"><img src="images/afri(13).jpg" alt="Cultural 7"></div>
+                <div class="collection-card"><img src="images/afri(21).jpg" alt="Cultural 8"></div>
+                <div class="collection-card"><img src="images/afri(65).jpg" alt="Cultural 9"></div>
+                <div class="collection-card"><img src="images/afri(153).jpg" alt="Cultural 10"></div>
+                <div class="collection-card"><img src="images/afri(172).jpg" alt="Cultural 11"></div>
+                <div class="collection-card"><img src="images/afri(213).jpg" alt="Cultural 12"></div>
+                <div class="collection-card"><img src="images/afrii(111).jpg" alt="Cultural 13"></div>
+                <div class="collection-card"><img src="images/afriii(1).jpg" alt="Cultural 14"></div>
+                <div class="collection-card"><img src="images/afriii(6).jpg" alt="Cultural 15"></div>
+                <div class="collection-card"><img src="images/afriii(23).jpg" alt="Cultural 16"></div>
+                <div class="collection-card"><img src="images/afriii(28).jpg" alt="Cultural 17"></div>
+                <div class="collection-card"><img src="images/afriii(34).jpg" alt="Cultural 18"></div>
+                <div class="collection-card"><img src="images/afriii(45).jpg" alt="Cultural 19"></div>
+                <div class="collection-card"><img src="images/afriii(102).jpg" alt="Cultural 20"></div>
+                <div class="collection-card"><img src="images/afriii(121).jpg" alt="Cultural 21"></div>
+                <div class="collection-card"><img src="images/afriii(128).jpg" alt="Cultural 22"></div>
+                <div class="collection-card"><img src="images/black.jpg" alt="Cultural 23"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collection-modal" id="graduationModal">
+        <div class="collection-panel shadow-box">
+            <button class="close-collection-btn" type="button" onclick="closeCollection('graduationModal')">×</button>
+            <div class="collection-header">
+                <span class="label">GRADUATION COLLECTION</span>
+                <h2>GRADUATION MOMENTS</h2>
+                <p>A selection of graduation images from the archive.</p>
+            </div>
+            <div class="collection-grid">
+                <div class="collection-card"><img src="images/IMG_5.jpg" alt="Graduation 1"></div>
+                <div class="collection-card"><img src="images/IMG_10.jpg" alt="Graduation 2"></div>
+                <div class="collection-card"><img src="images/IMG_23.jpg" alt="Graduation 3"></div>
+                <div class="collection-card"><img src="images/IMG_60.jpg" alt="Graduation 4"></div>
+                <div class="collection-card"><img src="images/IMG_63.jpg" alt="Graduation 5"></div>
+                <div class="collection-card"><img src="images/IMG_3198.jpg" alt="Graduation 6"></div>
+                <div class="collection-card"><img src="images/IMG_3200.jpg" alt="Graduation 7"></div>
+                <div class="collection-card"><img src="images/IMG_3201.jpg" alt="Graduation 8"></div>
+                <div class="collection-card"><img src="images/ddd (1).jpg" alt="Graduation 9"></div>
+                <div class="collection-card"><img src="images/ddd (3).jpg" alt="Graduation 10"></div>
+                <div class="collection-card"><img src="images/ddd (4).jpg" alt="Graduation 11"></div>
+                <div class="collection-card"><img src="images/hhh (16).jpg" alt="Graduation 12"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="collection-modal" id="outdoorModal">
+        <div class="collection-panel shadow-box">
+            <button class="close-collection-btn" type="button" onclick="closeCollection('outdoorModal')">×</button>
+            <div class="collection-header">
+                <span class="label">OUTDOOR COLLECTION</span>
+                <h2>OUTDOOR INSPIRATION</h2>
+                <p>A collection of outdoor inspirational images from the archive.</p>
+            </div>
+            <div class="collection-grid">
+                <div class="collection-card"><img src="images/148A8139.JPG" alt="Outdoor 1"></div>
+                <div class="collection-card"><img src="images/DEBL1628.JPG" alt="Outdoor 2"></div>
+                <div class="collection-card"><img src="images/DEBL1633.JPG" alt="Outdoor 3"></div>
+                <div class="collection-card"><img src="images/DEBL1644.JPG" alt="Outdoor 4"></div>
+                <div class="collection-card"><img src="images/DEBL1822.JPG" alt="Outdoor 5"></div>
+                <div class="collection-card"><img src="images/DEBL1837.JPG" alt="Outdoor 6"></div>
+                <div class="collection-card"><img src="images/DEBL2210.JPG" alt="Outdoor 7"></div>
+                <div class="collection-card"><img src="images/IMG_2.jpg" alt="Outdoor 8"></div>
+                <div class="collection-card"><img src="images/IMG_4.jpg" alt="Outdoor 9"></div>
+                <div class="collection-card"><img src="images/KUHI7488.jpg" alt="Outdoor 10"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPortraitCollection() {
+            document.getElementById('portraitModal').classList.add('active');
+        }
+
+        function openCulturalCollection() {
+            document.getElementById('culturalModal').classList.add('active');
+        }
+
+        function openGraduationCollection() {
+            document.getElementById('graduationModal').classList.add('active');
+        }
+
+        function openOutdoorCollection() {
+            document.getElementById('outdoorModal').classList.add('active');
+        }
+
+        function closeCollection(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            ['portraitModal', 'culturalModal', 'graduationModal'].forEach(id => {
+                const modal = document.getElementById(id);
+                if (modal && event.target === modal) {
+                    closeCollection(id);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
