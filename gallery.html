@@ -26,33 +26,130 @@
         body {
             background-color: var(--bg-main);
             color: var(--green);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             overflow-x: hidden;
         }
 
         /* --- Navigation --- */
-        nav {
-            padding: 40px 60px;
+        .main-nav {
+            padding: 18px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: fixed;
-            width: 100%;
-            top: 0;
+            top: 40px;
+            left: 60px;
+            right: 60px;
             z-index: 100;
-            background: rgba(244, 241, 238, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(244, 241, 238, 0.16);
+            backdrop-filter: blur(18px);
+            border-radius: 28px;
         }
 
-        .logo { font-weight: 900; font-size: 14px; line-height: 1.1; }
-        .nav-links { display: flex; list-style: none; gap: 30px; font-size: 11px; font-weight: 700; }
-        .nav-links a { text-decoration: none; color: var(--green); }
+        .logo { 
+            font-weight: 900; 
+            font-size: 14px; 
+            line-height: 1.1; 
+        }
+        
+        .logo span {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation Links */
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 30px; 
+            font-size: 11px; 
+            font-weight: 700; 
+            letter-spacing: 1px;
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--green);
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* Mobile Hamburger */
+        .nav-toggle {
+            display: none;
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .burger span {
+            width: 24px;
+            height: 2px;
+            background: var(--green);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Mobile Navigation Menu */
+        @media (max-width: 900px) {
+            .main-nav {
+                top: 20px;
+                left: 12px;
+                right: 12px;
+                padding: 20px;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 20px;
+                right: -100%;
+                width: 78%;
+                max-width: 340px;
+                height: calc(100vh - 40px);
+                background: rgba(244, 241, 238, 0.88);
+                backdrop-filter: blur(24px);
+                border-radius: 30px;
+                flex-direction: column;
+                gap: 30px;
+                padding: 100px 30px 40px;
+                font-size: 14px;
+                transition: right 0.3s ease;
+                z-index: 99;
+            }
+
+            .nav-toggle:checked ~ .nav-links {
+                right: 12px;
+                display: flex;
+            }
+
+            .nav-toggle:checked ~ .burger span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .nav-toggle:checked ~ .burger span:nth-child(2) {
+                opacity: 0;
+            }
+        }
 
         /* --- Header --- */
         header {
             padding: 180px 60px 80px;
             text-align: center;
+            margin-top: 40px;
         }
 
         .label { font-size: 10px; letter-spacing: 4px; opacity: 0.6; display: block; margin-bottom: 20px; }
@@ -129,19 +226,27 @@
         @media (max-width: 1024px) { .gallery-container { column-count: 2; } }
         @media (max-width: 600px) {
             .gallery-container { column-count: 1; padding: 0 20px; }
-            header { padding: 140px 20px 40px; }
-            nav { padding: 20px; }
-            .nav-links { display: none; }
+            header { padding: 140px 20px 40px; margin-top: 80px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav class="main-nav">
         <div class="logo">NASASIIRA PATRICK<br><span>VISUAL ENGINEER</span></div>
+        
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="burger">
+            <span></span>
+            <span></span>
+        </label>
+
         <ul class="nav-links">
             <li><a href="index.html">HOME</a></li>
             <li><a href="index.html#portfolio">PORTFOLIO</a></li>
+            <li><a href="gallery.html" class="active">GALLERY</a></li>
+            <li><a href="index.html#about">ABOUT</a></li>
+            <li><a href="index.html#services">SERVICES</a></li>
             <li><a href="index.html#contact">CONTACT</a></li>
         </ul>
     </nav>
